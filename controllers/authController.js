@@ -25,6 +25,7 @@ const register= async(req, res)=>{
         //     httpOnly:true,
         //     expires:new Date(Date.now()+oneDay),
         // })
+        //
         attachCookiesToResponse({res,user:tokenUser})
         res.status(200).json({user:tokenUser,token})
     } catch (error) {
