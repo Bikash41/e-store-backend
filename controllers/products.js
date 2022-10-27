@@ -118,6 +118,7 @@ const uploadImage = async(req,res)=>{
     if(!store){
         return res.status(404).json({msg:`No store with id: ${storeID}`})
     }
+    console.log("storeid:", store._id, "product id:", productId)
     fs.mkdir(path.join(__dirname, '../public/uploads/' + `${store._id}/` + `${productId}`),
     {recursive:true}, (err) => {
         if (err) {

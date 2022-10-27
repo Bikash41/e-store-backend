@@ -2,6 +2,7 @@ const {isTokenValid} = require('../utils/jwt')
 
 const authenticateUser = async (req,res,next)=>{
     const token = req.signedCookies.token;
+    console.log(token)
     if(!token){
         return res.status(404).json({msg:`Authentication failed`})
     }
@@ -18,6 +19,7 @@ const authenticateUser = async (req,res,next)=>{
 
 const authorizePermissions = (...roles) =>
 (req,res,next)=>{
+    console.log(req.user.role)
     if(!roles.includes(req.user.role)){
         res.status(401).json({msg:`You are not authorized`})
         next();
